@@ -1,0 +1,6 @@
+# Ignorar node_modules
+node_modules/
+
+# Ignorar autenticación y cache de wwebjs
+.wwebjs_auth/
+.wwebjs_cache/

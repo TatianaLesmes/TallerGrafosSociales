@@ -33,7 +33,7 @@ const saveMessageToCSV = (message) => {
         type: message.fromMe ? 'Enviado' : 'Recibido'
     }])
     .then(() => {
-        console.log(`✅ Mensaje guardado en CSV: ${message.body}`);
+        console.log(` Mensaje guardado en CSV: ${message.body}`);
     })
     .catch(err => {
         console.error('Error al guardar el mensaje en CSV:', err);
@@ -68,17 +68,17 @@ client.on('ready', async () => {
 
         const messages = await chat.fetchMessages({ limit: 100 });
 
-        console.log(`\n📩 Últimos mensajes de "${chat.name || chat.id.user}":`);
+        console.log(`\n Últimos mensajes de "${chat.name || chat.id.user}":`);
 
         messages.forEach(message => {
             saveMessageToCSV(message);
             const date = new Date(message.timestamp * 1000);
             const formattedDate = date.toLocaleString();
 
-            console.log(message.fromMe ? `📤 Mensaje ENVIADO:` : `📥 Mensaje RECIBIDO:`);
-            console.log(`🧑 Remitente: ${message.fromMe ? 'Yo' : message.from}`);
-            console.log(`💬 Mensaje: ${message.body}`);
-            console.log(`🕓 Fecha: ${formattedDate}`);
+            console.log(message.fromMe ? ` Mensaje ENVIADO:` : ` Mensaje RECIBIDO:`);
+            console.log(`Remitente: ${message.fromMe ? 'Yo' : message.from}`);
+            console.log(`Mensaje: ${message.body}`);
+            console.log(`Fecha: ${formattedDate}`);
         });
 
     } catch (error) {
@@ -95,10 +95,10 @@ client.on('message', async (message) => {
             const date = new Date(message.timestamp * 1000);
             const formattedDate = date.toLocaleString();
 
-            console.log(`\n📥 Nuevo mensaje RECIBIDO:`);
-            console.log(`🧑 Remitente: ${message.from}`);
-            console.log(`💬 Mensaje: ${message.body}`);
-            console.log(`🕓 Fecha: ${formattedDate}`);
+            console.log(`\n Nuevo mensaje RECIBIDO:`);
+            console.log(` Remitente: ${message.from}`);
+            console.log(` Mensaje: ${message.body}`);
+            console.log(` Fecha: ${formattedDate}`);
         }
     } catch (error) {
         console.error('Error al manejar el mensaje nuevo recibido:', error);
@@ -114,10 +114,10 @@ client.on('message_create', async (message) => {
             const date = new Date(message.timestamp * 1000);
             const formattedDate = date.toLocaleString();
 
-            console.log(`\n📤 Nuevo mensaje ENVIADO:`);
-            console.log(`🧑 Remitente: Yo`);
-            console.log(`💬 Mensaje: ${message.body}`);
-            console.log(`🕓 Fecha: ${formattedDate}`);
+            console.log(`\n Nuevo mensaje ENVIADO:`);
+            console.log(` Remitente: Yo`);
+            console.log(` Mensaje: ${message.body}`);
+            console.log(` Fecha: ${formattedDate}`);
         }
     } catch (error) {
         console.error('Error al manejar el mensaje enviado:', error);
